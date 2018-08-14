@@ -99,7 +99,8 @@ We can now launch an instance to the public subnet which can be accessed over th
 
 
 ## 8. Create a security group
-> A security group acts as a virtual firewall that controls the traffic for one or more instances. When you launch an instance, you associate one or more security groups with the instance. You add rules to each security group that allow traffic to or from its associated instances. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances that are associated with the security group after a short period. When we decide whether to allow traffic to reach an instance, we evaluate all the rules from all the security groups that are associated with the instance. 
+> A security group acts as a virtual firewall that controls the traffic for one or more instances. When you launch an instance, you associate one or more security groups with the instance. You add rules to each security group that allow traffic to or from its associated instances. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances that are associated with the security group after a short period. When we decide whether to allow traffic to reach an instance, we evaluate all the rules from all the security groups that are associated with the instance.  
+ 
 `aws ec2 create-security-group --group-name awsclitst-sg --description "My security group" --vpc-id vpc-fefa4f96`
 Response:  
 ```
@@ -117,7 +118,7 @@ We need to create an inbound rule to allow SSH access:
 
 ## 10. Create a key pair or importing an existing key pair
 Create:  
-`aws ec2 create-key-pair --key-name mykey --query 'KeyMaterial' --output text > mykey.pem`
+`aws ec2 create-key-pair --key-name mykey --query 'KeyMaterial' --output text > mykey.pem`  
 Import:  
 `openssl rsa -in mykey.pem -pubout > mykey.pub`
 
