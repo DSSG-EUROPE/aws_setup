@@ -15,7 +15,7 @@ CIDRBLOCKASSOCIATIONSET	vpc-cidr-assoc-7079fe18	10.0.0.0/16
 CIDRBLOCKSTATE	associated
 ```
 
-_References:_
+_References:_  
 [Digital Ocean. Understanding IP Addresses, Subnets, and CIDR Notation for Networking. March 12, 2014.](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking)  
 [Digital Ocean. An Introduction to Networking Terminology, Interfaces, and Protocols. January 14, 2014.](https://www.digitalocean.com/community/tutorials/an-introduction-to-networking-terminology-interfaces-and-protocols)
 
@@ -31,13 +31,13 @@ While a VPC spans all availability zones within a region, each subnet must lie i
 > The instances in the public subnet can receive inbound traffic directly from the Internet, whereas the instances in the private subnet can't. The instances in the public subnet can send outbound traffic directly to the Internet, whereas the instances in the private subnet can't. Instead, the instances in the private subnet can access the Internet by using a network address translation (NAT) instance that you launch into the public subnet.
 >
 > The database servers can connect to the Internet for software updates using the NAT gateway, but the Internet cannot establish connections to the database servers. 
-```
+
 _References:_  
 [VPC with Public and Private Subnets (NAT)](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html)  
 [serverfault: AWS VPC Private vs Public subnets](https://serverfault.com/questions/696306/aws-vpc-private-vs-public-subnets)
 
 First subnet:  
-`aws ec2 create-subnet --vpc-id vpc-fefa4f96 --cidr-block 10.0.1.0/24 --availability-zone eu-west-2a`
+`aws ec2 create-subnet --vpc-id vpc-fefa4f96 --cidr-block 10.0.1.0/24 --availability-zone eu-west-2a`  
 Response:  
 ```
 SUBNET	False	eu-west-2b	251	10.0.1.0/24	False	False	pending	subnet-2a382867	vpc-fefa4f96
@@ -52,7 +52,7 @@ SUBNET	False	eu-west-2b	251	10.0.2.0/24	False	False	pending	subnet-e73929aa	vpc-
 
 ## 3. Create an internet gateway
 An internet gateway provides a route which allows the VPC to be accessed from the internet. It behaves like a modem. (NB. without an internet gateway, resources within the VPC can still talk to each other, but they can't be accessed from the internet.)  
-`aws ec2 create-internet-gateway`
+`aws ec2 create-internet-gateway`  
 Response:  
 ```
 INTERNETGATEWAY	igw-deb79fb7
