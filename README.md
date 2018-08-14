@@ -1,5 +1,6 @@
 # AWS Setup: provisioning & management
 
+```
 0. Setting up an AWS account
 0.1. Identity Access Management
 
@@ -22,3 +23,4 @@
 4.1 Blocking scp downloads
 4.2 Monitoring login and sudo attempts
 4.3 Port obfuscation
+```
