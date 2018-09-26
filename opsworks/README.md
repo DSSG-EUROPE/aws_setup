@@ -130,7 +130,7 @@ aws opsworks set-permission \
 ```
 
 ## 6. Install PSQL, Miniconda, and other packages on EC2
-In order to access the PostgreSQL database, we will need to add the command line PSQL tools to the EC2 instance. SSH into the EC2, run `sudo su` to switch to the root user, and run the following:  
+In order to access the PostgreSQL database, we will need to add the command line PSQL tools to the EC2 instance. SSH into the EC2, run `sudo su` to switch to the root user, and run the following (answer `Y` when prompted to continue):  
 ```
 echo "Installing PostgreSQL tools..."
 sudo apt install postgresql-client-common;
@@ -142,7 +142,7 @@ sudo apt-get install postgresql-10;
 echo "Installed PostgreSQL tools: OK."
 ```
 
-(Optional) To install miniconda, return to your user profile (run `exit` to exit the root profile) and run:  
+(Optional) To install miniconda, return to your user profile (run `exit` to exit the root profile) and run the following (when prompted for an installation location, enter `/opt/miniconda3` to make it available system-wide, not just `/root/miniconda3`):  
 ```
 echo "Installing Miniconda..."
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh;
