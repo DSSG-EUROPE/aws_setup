@@ -43,6 +43,7 @@ Leave blank. Network interfaces and instance-level security groups may not be sp
 
 ### Storage (Volums)
 > EBS, 128GB, Delete on terminate (yes)
+
 The size is largely dependent on your own needs. We found that for teams cloning large GitHub repositories and creating large conda environments, a bare minimum of 8GB per user was required. However, it is prudent to allocate more than the bare minimum to avoid having to upsize the root volume later. (The root volume is the core of your machine, containing the OS itself, the user configurations, etc.)
 
 
@@ -96,6 +97,7 @@ $ EBS-optimized instance
 $ User data
 > [optional]
 This allows you to specify commands which will be run every time a new instance is created, e.g. to install required packages, etc.
+
 Make sure whatever commands you include here actually work as expected by running them manually on a fresh EC2 instance first. Otherwise, if these commands fail they may compromise your entire launch template. For more info, see https://bloggingnectar.com/aws/automate-your-ec2-instance-setup-with-ec2-user-data-scripts/
 
 
@@ -104,10 +106,10 @@ Make sure whatever commands you include here actually work as expected by runnin
 ## Request Spot Instances
 
 ### Tell us your application or task need
-[] Load balancing workloads
-[] Flexibile workloads
+[ ] Load balancing workloads
+[ ] Flexibile workloads
 [x] Big data workloads
-[] Defined duration workloads
+[ ] Defined duration workloads
 
 
 ### Configure your instances
@@ -178,20 +180,27 @@ Apply defaults.
 
 
 ## Common errors
+```
 Status: spotFleetRequestConfigurationInvalid
 Description: [...] Linux/UNIX: Missing device name
 Solution: add an additional EBS volume, e.g. 16GB mounted on /dev/sdb
+```
 
+```
 Status: spotFleetRequestConfigurationInvalid
 Description: [...] The attribute 'disableApiTermination' cannot be used when launching a Spot instance.
 Solution: Disable termination protection.
+```
 +info: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html
 
+```
 Status: spotFleetRequestConfigurationInvalid
 Description: The parameter validUntil cannot be specified when the SpotRequestType is set to 'single_auction'.
-Solution: @ `Spot Request` page, @ `Additional request details` section, uncheck `Apply defaults` box, and then uncheck the `Terminate the instances when the request exprires` box.
+Solution (1): @ `Spot Request` page, @ `Additional request details` section, uncheck `Apply defaults` box, and then uncheck the `Terminate the instances when the request exprires` box.
+Solution (2): Changed "Valid to: Don't include"
+```
 
-Solution 2: Valid to: Don't include
-
+```
 Status: spotFleetRequestConfigurationInvalid
-remove the HibernationOptions parameter. To enable the Spot service to hibernate future Spot Instances, set InstanceInterruptionBehavior to hibernate
+Description: remove the HibernationOptions parameter. To enable the Spot service to hibernate future Spot Instances, set InstanceInterruptionBehavior to hibernate
+```
